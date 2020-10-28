@@ -8,4 +8,4 @@
 - firebase
 
 ### Live link
-[*click to open Expense tracker*]  
+[*click to open*]  
