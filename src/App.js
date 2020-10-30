@@ -32,7 +32,7 @@ function App() {
     setInput('')
   }
   return (
-    <div className='container text-center'>
+    <div className='container text-center my-4'>
       <div className='jumbotron display-4'>Todo App</div>
       <form>
         <div className='row'>
