@@ -8,9 +8,12 @@ function App() {
   const [input, setInput] = useState('')
 
   //when app load we need to connect the database and fetch the new todos entry from database
+  //option orderBy(take two param, key and desc or asc) after collection
   useEffect(() => {
     db.collection('todos').onSnapshot((snapshot) => {
-      setTodos(snapshot.docs.map((doc) => doc.data().todo))
+      setTodos(
+        snapshot.docs.map((doc) => ({ id: doc.id, todo: doc.data().todo }))
+      )
       console.log(snapshot.docs.map((doc) => doc.data()))
     })
   }, [])
@@ -24,26 +27,34 @@ function App() {
     })
     //for locally store data
     //setTodos([...todos, input])
-    console.log(todos[0])
+    //console.log(todos[0])
 
     setInput('')
   }
   return (
-    <div className='App'>
-      <h1>Todo App</h1>
+    <div className='container text-center'>
+      <div className='jumbotron display-4'>Todo App</div>
       <form>
-        <input
-          placeholder='input todos..'
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-        />
-        <button onClick={addtodo} disabled={!input}>
-          Add
-        </button>
+        <div className='row'>
+          <div className='col-md-9'>
+            <input
+              className='form-control form-control-lg'
+              placeholder='input todos..'
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+            />
+            <div className='col-md-3'>
+              <button className='btn' onClick={addtodo} disabled={!input}>
+                Add
+              </button>
+            </div>
+          </div>
+        </div>
       </form>
+
       <div>
         {todos.map((todo) => (
-          <TodoItem item={todo} />
+          <TodoItem key={todo.id} item={todo} />
         ))}
       </div>
     </div>
