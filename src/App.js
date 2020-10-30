@@ -43,20 +43,24 @@ function App() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
             />
-            <div className='col-md-3'>
-              <button className='btn' onClick={addtodo} disabled={!input}>
-                Add
-              </button>
-            </div>
+          </div>
+          <div className='col-md-3'>
+            <button
+              className='btn btn-primary btn-lg px-5'
+              onClick={addtodo}
+              disabled={!input}
+            >
+              Add
+            </button>
           </div>
         </div>
       </form>
 
-      <div>
+      <ul className='list-group my-3'>
         {todos.map((todo) => (
           <TodoItem key={todo.id} item={todo} />
         ))}
-      </div>
+      </ul>
     </div>
   )
 }
