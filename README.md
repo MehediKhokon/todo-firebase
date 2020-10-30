@@ -5,7 +5,8 @@
 - React
 - React hooks ( useState, useEffect )
 - Custom CSS
-- firebase
+- Firebase (hosting & database)
+- Bootstrap 4.5
 
 ### Live link
 [*click to open*](https://react-todo-hook.web.app/)  
